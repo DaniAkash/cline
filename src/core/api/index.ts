@@ -6,6 +6,7 @@ import { AskSageHandler } from "./providers/asksage"
 import { BasetenHandler } from "./providers/baseten"
 import { AwsBedrockHandler } from "./providers/bedrock"
 import { CerebrasHandler } from "./providers/cerebras"
+import { ClarifaiHandler } from "./providers/clarifai"
 import { ClaudeCodeHandler } from "./providers/claude-code"
 import { ClineHandler } from "./providers/cline"
 import { DeepSeekHandler } from "./providers/deepseek"
@@ -278,6 +279,12 @@ function createHandlerForProvider(
 			return new NebiusHandler({
 				onRetryAttempt: options.onRetryAttempt,
 				nebiusApiKey: options.nebiusApiKey,
+				apiModelId: mode === "plan" ? options.planModeApiModelId : options.actModeApiModelId,
+			})
+		case "clarifai":
+			return new ClarifaiHandler({
+				onRetryAttempt: options.onRetryAttempt,
+				clarifaiApiKey: options.clarifaiApiKey,
 				apiModelId: mode === "plan" ? options.planModeApiModelId : options.actModeApiModelId,
 			})
 		case "asksage":

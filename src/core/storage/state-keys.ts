@@ -202,6 +202,7 @@ export interface Secrets {
 	zaiApiKey: string | undefined
 	huggingFaceApiKey: string | undefined
 	nebiusApiKey: string | undefined
+	clarifaiApiKey: string | undefined
 	sambanovaApiKey: string | undefined
 	cerebrasApiKey: string | undefined
 	sapAiCoreClientId: string | undefined

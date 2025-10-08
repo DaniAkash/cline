@@ -16,6 +16,7 @@ import { AskSageProvider } from "./providers/AskSageProvider"
 import { BasetenProvider } from "./providers/BasetenProvider"
 import { BedrockProvider } from "./providers/BedrockProvider"
 import { CerebrasProvider } from "./providers/CerebrasProvider"
+import { ClarifaiProvider } from "./providers/ClarifaiProvider"
 import { ClaudeCodeProvider } from "./providers/ClaudeCodeProvider"
 import { ClineProvider } from "./providers/ClineProvider"
 import { DeepSeekProvider } from "./providers/DeepSeekProvider"
@@ -156,6 +157,7 @@ const ApiOptions = ({ showModelOptions, apiErrorMessage, modelIdErrorMessage, is
 			{ value: "moonshot", label: "Moonshot" },
 			{ value: "huggingface", label: "Hugging Face" },
 			{ value: "nebius", label: "Nebius AI Studio" },
+			{ value: "clarifai", label: "Clarifai" },
 			{ value: "asksage", label: "AskSage" },
 			{ value: "xai", label: "xAI" },
 			{ value: "sambanova", label: "SambaNova" },
@@ -465,6 +467,10 @@ const ApiOptions = ({ showModelOptions, apiErrorMessage, modelIdErrorMessage, is
 
 			{apiConfiguration && selectedProvider === "nebius" && (
 				<NebiusProvider currentMode={currentMode} isPopup={isPopup} showModelOptions={showModelOptions} />
+			)}
+
+			{apiConfiguration && selectedProvider === "clarifai" && (
+				<ClarifaiProvider currentMode={currentMode} isPopup={isPopup} showModelOptions={showModelOptions} />
 			)}
 
 			{apiConfiguration && selectedProvider === "xai" && (

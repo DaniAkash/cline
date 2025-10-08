@@ -23,6 +23,7 @@ export type ApiProvider =
 	| "litellm"
 	| "moonshot"
 	| "nebius"
+	| "clarifai"
 	| "fireworks"
 	| "asksage"
 	| "xai"
@@ -66,6 +67,7 @@ export interface ApiHandlerSecrets {
 	zaiApiKey?: string
 	huggingFaceApiKey?: string
 	nebiusApiKey?: string
+	clarifaiApiKey?: string
 	sambanovaApiKey?: string
 	cerebrasApiKey?: string
 	sapAiCoreClientId?: string
@@ -2390,6 +2392,52 @@ export const askSageModels = {
 		outputPrice: 0,
 	},
 }
+
+// Clarifai Models
+export const clarifaiModels = {
+	"openai/gpt-oss-120b": {
+		maxTokens: 131_072,
+		contextWindow: 131_072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.09,
+		outputPrice: 0.36,
+	},
+	"qwen/qwen3-next-80b-a3b-thinking": {
+		maxTokens: 262_144,
+		contextWindow: 262_144,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 1.088,
+		outputPrice: 1.0759999999999998,
+	},
+	"qwen/qwen3-30b-a3b-thinking-2507": {
+		maxTokens: 32_768,
+		contextWindow: 262_144,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.36,
+		outputPrice: 1.3,
+	},
+	"qwen/qwen3-30b-a3b-instruct-2507": {
+		maxTokens: 16_384,
+		contextWindow: 262_144,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.3,
+		outputPrice: 0.5,
+	},
+	"openai/gpt-oss-20b": {
+		maxTokens: 32_768,
+		contextWindow: 131_072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.045,
+		outputPrice: 0.18,
+	},
+} as const satisfies Record<string, ModelInfo>
+export type ClarifaiModelId = keyof typeof clarifaiModels
+export const clarifaiDefaultModelId: ClarifaiModelId = "openai/gpt-oss-120b"
 
 // Nebius AI Studio
 // https://docs.nebius.com/studio/inference/models
